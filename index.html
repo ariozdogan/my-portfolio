@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ari Ozdogan</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Top nav ── */
+    nav {
+      padding: 32px 0 0;
+    }
+
+    nav .name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #e6edf3;
+      margin-bottom: 6px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      font-size: 0.92rem;
+      color: #58a6ff;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 56px 0 0;
+    }
+
+    section:last-of-type {
+      padding-bottom: 80px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #7d8590;
+      margin-bottom: 20px;
+      border-top: 1px solid #21262d;
+      padding-top: 18px;
+    }
+
+    /* ── About ── */
+    .about-body {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h1 {
+      font-size: 1.7rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      font-family: Georgia, "Times New Roman", Times, serif;
+    }
+
+    .about-text h1 strong {
+      font-weight: 700;
+    }
+
+    .about-text p {
+      font-size: 0.97rem;
+      color: #e6edf3;
+      margin-bottom: 12px;
+    }
+
+    .about-text .contact {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #7d8590;
+    }
+
+    .about-text .contact a {
+      color: #58a6ff;
+    }
+
+    .about-photo {
+      flex-shrink: 0;
+    }
+
+    .about-photo img {
+      width: 120px;
+      height: 120px;
+      border-radius: 3px;
+      object-fit: cover;
+      display: block;
+      background: #161b22;
+    }
+
+    /* placeholder box shown when there's no real photo */
+    .photo-placeholder {
+      width: 120px;
+      height: 120px;
+      border-radius: 3px;
+      background: #161b22;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      color: #7d8590;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ── Vertical alternating timeline ── */
+    .timeline {
+      position: relative;
+      padding: 8px 0 4px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #21262d;
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      display: flex;
+      position: relative;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 6px;
+      width: 7px;
+      height: 7px;
+      background: #484f58;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .tl-date,
+    .tl-blurb {
+      width: 50%;
+      font-size: 0.93rem;
+    }
+
+    /* Odd items: date on left, blurb on right */
+    .timeline-item:nth-child(odd) .tl-date {
+      order: 1;
+      text-align: right;
+      padding-right: 28px;
+      color: #7d8590;
+      font-size: 0.85rem;
+      padding-top: 1px;
+    }
+
+    .timeline-item:nth-child(odd) .tl-blurb {
+      order: 2;
+      padding-left: 28px;
+      color: #e6edf3;
+    }
+
+    /* Even items: blurb on left, date on right */
+    .timeline-item:nth-child(even) .tl-date {
+      order: 2;
+      text-align: left;
+      padding-left: 28px;
+      color: #7d8590;
+      font-size: 0.85rem;
+      padding-top: 1px;
+    }
+
+    .timeline-item:nth-child(even) .tl-blurb {
+      order: 1;
+      text-align: right;
+      padding-right: 28px;
+      color: #e6edf3;
+    }
+
+    @media (max-width: 540px) {
+      .timeline::before {
+        left: 6px;
+        transform: none;
+      }
+
+      .timeline-item::before {
+        left: 3px;
+        transform: none;
+      }
+
+      .timeline-item {
+        flex-direction: column;
+        padding-left: 22px;
+      }
+
+      .tl-date,
+      .tl-blurb {
+        width: 100%;
+        text-align: left !important;
+        padding: 0 !important;
+        order: initial !important;
+      }
+
+      .tl-date {
+        font-size: 0.8rem !important;
+        margin-bottom: 1px;
+      }
+    }
+
+    /* ── Two-column entry table ── */
+    .entry-list {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .entry-list tr + tr td {
+      padding-top: 14px;
+    }
+
+    .entry-list td {
+      vertical-align: top;
+      font-size: 0.93rem;
+    }
+
+    .entry-list td.date {
+      white-space: nowrap;
+      color: #7d8590;
+      padding-right: 28px;
+      min-width: 80px;
+      font-size: 0.87rem;
+      padding-top: 2px;
+    }
+
+    .entry-list td.detail {
+      color: #e6edf3;
+    }
+
+    .entry-list td.detail .item-title {
+      font-weight: 600;
+    }
+
+    .entry-list td.detail .item-title a {
+      color: #e6edf3;
+      font-weight: 600;
+    }
+
+    .entry-list td.detail .item-title a:hover {
+      color: #58a6ff;
+      text-decoration: underline;
+    }
+
+    .entry-list td.detail .item-desc {
+      color: #7d8590;
+      font-size: 0.9rem;
+    }
+
+    .entry-list td.detail .item-links {
+      margin-top: 3px;
+      font-size: 0.85rem;
+    }
+
+    .entry-list td.detail .item-links a + a::before {
+      content: " · ";
+      color: #7d8590;
+    }
+
+    /* ── Skill tags ── */
+    .skill-tag {
+      display: inline-block;
+      background: #161b22;
+      color: #e6edf3;
+      border: 1px solid #21262d;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      padding: 2px 8px;
+      margin: 2px 4px 2px 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid #21262d;
+      padding: 20px 0 40px;
+      font-size: 0.8rem;
+      color: #7d8590;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #58a6ff;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <div class="name">Ari Ozdogan</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── About ── -->
+  <section id="about">
+    <div class="section-label">About</div>
+    <div class="about-body">
+      <div class="about-text">
+        <h1><strong>Ari</strong> Ozdogan</h1>
+        <p>
+          [YOUR BIO — e.g., "I am a second-year PhD student at [University] advised by
+          [Advisor Name]. My research focuses on [research area]."]
+        </p>
+        <p>
+          [OPTIONAL SECOND SENTENCE — e.g., "Previously, I studied [degree] at [institution]
+          and worked at [company or lab]."]
+        </p>
+        <p>
+          [OPTIONAL THIRD SENTENCE — e.g., "I am broadly interested in [topics]."]
+        </p>
+        <div class="contact">
+          <p>Feel free to reach out at <strong>aozdogan1[at]stevens[dot]edu</strong></p>
+        </div>
+      </div>
+      <div class="about-photo">
+        <!-- Replace the placeholder div with an <img> tag once you have a photo:
+             <img src="photo.jpg" alt="[YOUR NAME]" /> -->
+        <div class="photo-placeholder">photo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Timeline ── -->
+  <section id="timeline">
+    <div class="section-label">Timeline</div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="tl-date">Jun 2026</div>
+        <div class="tl-blurb">[Short blurb — e.g., "Paper accepted to [Venue]."]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">Mar 2026</div>
+        <div class="tl-blurb">[Short blurb — e.g., "Started internship at [Company]."]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">Jan 2026</div>
+        <div class="tl-blurb">[Short blurb — e.g., "Talk at [Workshop / Event]."]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">Sep 2025</div>
+        <div class="tl-blurb">[Short blurb — e.g., "Joined [Lab / Program] as a [role]."]</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Experience ── -->
+  <section id="experience">
+    <div class="section-label">Experience</div>
+    <table class="entry-list">
+      <tbody>
+        <tr>
+          <td class="date">[Start] —<br>present</td>
+          <td class="detail">
+            <div class="item-title">[Role Title]</div>
+            <div class="item-desc">[Institution / Lab / Company] &middot; [Location or Remote]</div>
+            <div class="item-desc">[One or two sentences describing what you work on, who you work with, or what you are building.]</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="date">[Start] —<br>[End]</td>
+          <td class="detail">
+            <div class="item-title">[Role Title]</div>
+            <div class="item-desc">[Institution / Lab / Company] &middot; [Location or Remote]</div>
+            <div class="item-desc">[One or two sentences describing what you worked on.]</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Projects ── -->
+  <section id="projects">
+    <div class="section-label">Projects</div>
+    <table class="entry-list">
+      <tbody>
+        <tr>
+          <td class="date">2026</td>
+          <td class="detail">
+            <div class="item-title">
+              <a href="#">[Project One Title]</a>
+            </div>
+            <div class="item-desc">
+              [One-line description of what this project does or what problem it solves.]
+            </div>
+            <div class="item-links">
+              <a href="#">paper</a>
+              <a href="#">code</a>
+              <a href="#">demo</a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="date">2025</td>
+          <td class="detail">
+            <div class="item-title">
+              <a href="#">[Project Two Title]</a>
+            </div>
+            <div class="item-desc">
+              [One-line description of what this project does or what problem it solves.]
+            </div>
+            <div class="item-links">
+              <a href="#">code</a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="date">2024</td>
+          <td class="detail">
+            <div class="item-title">
+              <a href="#">[Project Three Title]</a>
+            </div>
+            <div class="item-desc">
+              [One-line description of what this project does or what problem it solves.]
+            </div>
+            <div class="item-links">
+              <a href="#">paper</a>
+              <a href="#">code</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Skills ── -->
+  <section id="skills">
+    <div class="section-label">Skills</div>
+    <table class="entry-list">
+      <tbody>
+        <tr>
+          <td class="date">Languages</td>
+          <td class="detail">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">[Language]</span>
+            <span class="skill-tag">[Language]</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="date">Frameworks</td>
+          <td class="detail">
+            <span class="skill-tag">[Framework]</span>
+            <span class="skill-tag">[Framework]</span>
+            <span class="skill-tag">[Framework]</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="date">Tools</td>
+          <td class="detail">
+            <span class="skill-tag">[Tool]</span>
+            <span class="skill-tag">[Tool]</span>
+            <span class="skill-tag">[Tool]</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-links">
+      <a href="https://github.com/[YOUR GITHUB]" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/[YOUR LINKEDIN]" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="/[YOUR CV].pdf" target="_blank" rel="noopener noreferrer">CV</a>
+    </div>
+    <p>Last updated June 2026.</p>
+  </footer>
+
+</div><!-- /.container -->
+
+</body>
+</html>
