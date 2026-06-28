@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ari Ozdogan</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -344,6 +345,28 @@
       color: #58a6ff;
       font-size: 0.85rem;
     }
+
+    /* ── Entrance animations ── */
+    @media (prefers-reduced-motion: no-preference) {
+      @keyframes fade-up {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0);   }
+      }
+
+      nav,
+      section,
+      footer {
+        animation: fade-up 400ms ease-out both;
+      }
+
+      nav                    { animation-delay:   0ms; }
+      section:nth-of-type(1) { animation-delay: 100ms; }
+      section:nth-of-type(2) { animation-delay: 200ms; }
+      section:nth-of-type(3) { animation-delay: 300ms; }
+      section:nth-of-type(4) { animation-delay: 400ms; }
+      section:nth-of-type(5) { animation-delay: 500ms; }
+      footer                 { animation-delay: 600ms; }
+    }
   </style>
 </head>
 <body>
@@ -369,15 +392,13 @@
       <div class="about-text">
         <h1><strong>Ari</strong> Ozdogan</h1>
         <p>
-          [YOUR BIO — e.g., "I am a second-year PhD student at [University] advised by
-          [Advisor Name]. My research focuses on [research area]."]
+          I'm a second-year computer engineering student at Stevens Institute of Technology located in the NYC Metropolitan Area.
         </p>
         <p>
-          [OPTIONAL SECOND SENTENCE — e.g., "Previously, I studied [degree] at [institution]
-          and worked at [company or lab]."]
+          I am currently working as an undergraduate research assistant in the Department of Mechanical Engineering, as well as working on my own projects in my free time.
         </p>
         <p>
-          [OPTIONAL THIRD SENTENCE — e.g., "I am broadly interested in [topics]."]
+          I am broadly interested in software development, low-level system, and mathematics.
         </p>
         <div class="contact">
           <p>Feel free to reach out at <strong>aozdogan1[at]stevens[dot]edu</strong></p>
@@ -397,23 +418,18 @@
     <div class="timeline">
 
       <div class="timeline-item">
-        <div class="tl-date">Jun 2026</div>
-        <div class="tl-blurb">[Short blurb — e.g., "Paper accepted to [Venue]."]</div>
+        <div class="tl-date">May 2026</div>
+        <div class="tl-blurb">I began my summer research position</div>
       </div>
 
       <div class="timeline-item">
-        <div class="tl-date">Mar 2026</div>
-        <div class="tl-blurb">[Short blurb — e.g., "Started internship at [Company]."]</div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="tl-date">Jan 2026</div>
-        <div class="tl-blurb">[Short blurb — e.g., "Talk at [Workshop / Event]."]</div>
+        <div class="tl-date">April 2026</div>
+        <div class="tl-blurb">I was elected to serve as the Communcations Chair for IEEE</div>
       </div>
 
       <div class="timeline-item">
         <div class="tl-date">Sep 2025</div>
-        <div class="tl-blurb">[Short blurb — e.g., "Joined [Lab / Program] as a [role]."]</div>
+        <div class="tl-blurb">I started my first semester at Stevens!</div>
       </div>
 
     </div>
@@ -425,19 +441,11 @@
     <table class="entry-list">
       <tbody>
         <tr>
-          <td class="date">[Start] —<br>present</td>
+          <td class="date">May 2026 —<br>present</td>
           <td class="detail">
-            <div class="item-title">[Role Title]</div>
-            <div class="item-desc">[Institution / Lab / Company] &middot; [Location or Remote]</div>
-            <div class="item-desc">[One or two sentences describing what you work on, who you work with, or what you are building.]</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="date">[Start] —<br>[End]</td>
-          <td class="detail">
-            <div class="item-title">[Role Title]</div>
-            <div class="item-desc">[Institution / Lab / Company] &middot; [Location or Remote]</div>
-            <div class="item-desc">[One or two sentences describing what you worked on.]</div>
+            <div class="item-title">Undergraduate Research Assistant</div>
+            <div class="item-desc">Stevens Institute of Technology &middot; Remote</div>
+            <div class="item-desc">Currently researching, developing, and testing the backend of ScaffoldAI, a thermodynammics tutoring system.</div>
           </td>
         </tr>
       </tbody>
@@ -453,44 +461,13 @@
           <td class="date">2026</td>
           <td class="detail">
             <div class="item-title">
-              <a href="#">[Project One Title]</a>
+              <a href="#">Custom Programming Language Interpreter</a>
             </div>
             <div class="item-desc">
-              [One-line description of what this project does or what problem it solves.]
+              Building a hand-written lexer, parser, and evaluator in Python
             </div>
             <div class="item-links">
-              <a href="#">paper</a>
-              <a href="#">code</a>
-              <a href="#">demo</a>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="date">2025</td>
-          <td class="detail">
-            <div class="item-title">
-              <a href="#">[Project Two Title]</a>
-            </div>
-            <div class="item-desc">
-              [One-line description of what this project does or what problem it solves.]
-            </div>
-            <div class="item-links">
-              <a href="#">code</a>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="date">2024</td>
-          <td class="detail">
-            <div class="item-title">
-              <a href="#">[Project Three Title]</a>
-            </div>
-            <div class="item-desc">
-              [One-line description of what this project does or what problem it solves.]
-            </div>
-            <div class="item-links">
-              <a href="#">paper</a>
-              <a href="#">code</a>
+              <a href="https://github.com/ariozdogan/kite-interpreter.git" target="_blank">code</a>
             </div>
           </td>
         </tr>
@@ -508,24 +485,21 @@
           <td class="detail">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">C++</span>
-            <span class="skill-tag">[Language]</span>
-            <span class="skill-tag">[Language]</span>
           </td>
         </tr>
         <tr>
-          <td class="date">Frameworks</td>
+          <td class="date">Libraries</td>
           <td class="detail">
-            <span class="skill-tag">[Framework]</span>
-            <span class="skill-tag">[Framework]</span>
-            <span class="skill-tag">[Framework]</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Matplotlib</span>
           </td>
         </tr>
         <tr>
           <td class="date">Tools</td>
           <td class="detail">
-            <span class="skill-tag">[Tool]</span>
-            <span class="skill-tag">[Tool]</span>
-            <span class="skill-tag">[Tool]</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Arduino</span>
           </td>
         </tr>
       </tbody>
@@ -535,8 +509,8 @@
   <!-- ── Footer ── -->
   <footer>
     <div class="footer-links">
-      <a href="https://github.com/[YOUR GITHUB]" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://linkedin.com/in/[YOUR LINKEDIN]" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/ariozdogan" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/ariozdogan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="/[YOUR CV].pdf" target="_blank" rel="noopener noreferrer">CV</a>
     </div>
     <p>Last updated June 2026.</p>
